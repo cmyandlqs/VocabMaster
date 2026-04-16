@@ -1,0 +1,240 @@
+/* ================================
+   考研英语词汇大师 - 毛玻璃组件
+   ================================ */
+
+/* ===== 毛玻璃容器 ===== */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-strong {
+  background: var(--bg-glass-solid);
+  backdrop-filter: saturate(200%) blur(30px);
+  -webkit-backdrop-filter: saturate(200%) blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .glass {
+  background: var(--bg-glass);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .glass-strong {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ===== 顶部标题栏 ===== */
+.title-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--title-bar-height);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-md);
+  background: var(--bg-glass);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .title-bar {
+  border-bottom-color: var(--border);
+}
+
+.title-bar__title {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.title-bar__icon {
+  position: absolute;
+  left: var(--space-md);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.title-bar__icon:hover {
+  color: var(--text-primary);
+}
+
+.title-bar__actions {
+  position: absolute;
+  right: var(--space-md);
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.title-bar__action {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.title-bar__action:hover {
+  color: var(--text-primary);
+  background: var(--accent-light);
+}
+
+/* ===== 底部 Dock 导航 ===== */
+.dock {
+  position: fixed;
+  bottom: calc(var(--safe-area-bottom) + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-glass-solid);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-floating);
+}
+
+[data-theme="dark"] .dock {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dock__item {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-lg);
+  transition: all var(--duration-normal) var(--ease-bounce);
+  cursor: pointer;
+}
+
+.dock__item:hover {
+  color: var(--text-primary);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.dock__item.active {
+  color: var(--accent);
+}
+
+.dock__item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+}
+
+.dock__icon {
+  width: 26px;
+  height: 26px;
+}
+
+.dock__label {
+  font-size: 10px;
+  font-weight: var(--font-medium);
+}
+
+/* ===== Mac 窗口卡片 ===== */
+.mac-window {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.mac-window__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border);
+}
+
+.mac-window__controls {
+  display: flex;
+  gap: 8px;
+}
+
+.mac-window__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mac-window__dot--close { background: var(--window-close); }
+.mac-window__dot--minimize { background: var(--window-minimize); }
+.mac-window__dot--maximize { background: var(--window-maximize); }
+
+.mac-window__title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  flex: 1;
+  text-align: center;
+  padding-right: 48px; /* 平衡controls的空间 */
+}
+
+.mac-window__content {
+  padding: var(--space-lg);
+}
+
+/* ===== 毛玻璃背景区域 ===== */
+.glass-surface {
+  background: var(--bg-glass);
+  backdrop-filter: saturate(150%) blur(16px);
+  -webkit-backdrop-filter: saturate(150%) blur(16px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .glass-surface {
+  border-color: var(--border-strong);
+}
+
+/* ===== 半透明覆盖层 ===== */
+.glass-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+.glass-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
